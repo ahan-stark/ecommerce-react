@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node16",  
+    "module": "Node16",
+    "target": "esnext",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,          
+    // other options...
+  }
+}
