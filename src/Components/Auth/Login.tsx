@@ -8,7 +8,10 @@ import { addToLocalStorage, LoginValidate } from "../../Config/Auth/Auth";
 import Button from "@mui/material/Button";
 import { IconButton, Snackbar } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../Store/Auth/LoginSlice";
 const Login: React.FC<AuthState> = ({ setState }) => {
+  const dipatch = useDispatch();
   const userName = useRef<HTMLInputElement>(null);
   const passWord = useRef<HTMLInputElement>(null);
   const [snackbarMessage, setSnackbarMessage] = useState<string>("");
@@ -43,6 +46,7 @@ const Login: React.FC<AuthState> = ({ setState }) => {
       setSnackbarOpen(true);
       return;
     } else {
+      dipatch(addUser({"userId":loginResponse.userId, "authToken":loginResponse.authenticationToken}))
       addToLocalStorage(loginResponse);
     }
   };

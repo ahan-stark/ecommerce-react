@@ -3,6 +3,8 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./Store/Store";
 import Auth from "./Components/Auth/Auth";
+import Header from "./Components/Header/Header";
+import Homepage from "./Components/Home/Homepage";
 
 function App() {
   const Layout = () => {
@@ -10,9 +12,11 @@ function App() {
       <>
         <Provider store={store}>
           <div className="flex flex-col">
-            <div className="text-4xl h-[2.2em] bg-orange-500">Header</div>
+            <div className="text-4xl h-[2.2em] bg-blue-500">
+              <Header />
+            </div>
             <div
-              className ="flex flex-col"
+              className="flex flex-col"
               style={{ minHeight: "calc(100vh - 4.97em)" }}
             >
               <Outlet></Outlet>
@@ -28,8 +32,12 @@ function App() {
       element: <Layout />,
       children: [
         {
-          path: "/",
+          path: "/auth",
           element: <Auth />,
+        },
+        {
+          path: "/home",
+          element: <Homepage />,
         },
       ],
     },
