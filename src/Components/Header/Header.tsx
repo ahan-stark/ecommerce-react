@@ -4,13 +4,13 @@ import { RootState } from "../../Store/Store";
 import { useNavigate } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import logoImg from "../../Images/Flipkart-Logo.png";
-import { addUser } from "../../Store/Auth/LoginSlice";
+import { addUser, LoginState } from "../../Store/Auth/LoginSlice";
 import { LoginResponse } from "../../Utils/Types/Auth/AuthTypes";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const loginDetails = useSelector((state: RootState) => state.login);
+  const loginDetails: LoginState = useSelector((state: RootState) => state.login);
 
   useEffect(() => {
     if(loginDetails.userId !== null){

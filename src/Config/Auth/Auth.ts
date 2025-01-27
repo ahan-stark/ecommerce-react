@@ -3,7 +3,7 @@ import { url } from "../GlobalUrl";
 
 export const LoginValidate = async (loginData: LoginData): Promise<LoginResponse> => {
   try {
-    const data = await fetch(url + "/auth/login", {
+    const data = await fetch(url + "/api/auth/login", {
       method : 'POST',
       headers: {
         "content-type": "application/json",
@@ -20,7 +20,7 @@ export const LoginValidate = async (loginData: LoginData): Promise<LoginResponse
 
 export const CheckIfUserExists =async(userData : SignUpData):Promise<UserExists> =>{
   try {
-    const data = await fetch(url  + '/auth/checkSignUpUser',{
+    const data = await fetch(url  + '/api/auth/checkSignUpUser',{
       method :'POST',
       headers: {
         "content-type": "application/json",

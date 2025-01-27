@@ -82,7 +82,7 @@ const Login: React.FC<AuthState> = ({ setState }) => {
           onClose={handleSnackbarClose}
           message={snackbarMessage}
           ContentProps={{
-            style: { color: "#f7f76d", backgroundColor: "#f54936" }, // Dynamically set the text color
+            style: { color: "#f7f76d", backgroundColor: "#f54936" },
           }}
           action={
             <IconButton

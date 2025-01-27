@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface LoginState {
+export interface LoginState {
   userId: number | null | undefined;
   authToken: string | null | undefined;
 }
@@ -18,6 +18,7 @@ const LoginSlice = createSlice({
     },
     removeUser: (state) => {
       state.userId = null;
+      state.authToken = null;
     },
   },
 });

@@ -11,15 +11,12 @@ function App() {
     return (
       <>
         <Provider store={store}>
-          <div className="flex flex-col">
+          <div className="flex flex-col h-screen">
             <div className="text-4xl h-[2.2em] bg-blue-500">
               <Header />
             </div>
-            <div
-              className="flex flex-col"
-              style={{ minHeight: "calc(100vh - 4.97em)" }}
-            >
-              <Outlet></Outlet>
+            <div className="flex flex-col h-[calc(100vh-4.97em)]">
+              <Outlet />
             </div>
           </div>
         </Provider>
