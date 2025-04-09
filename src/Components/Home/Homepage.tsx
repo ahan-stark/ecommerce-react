@@ -3,35 +3,35 @@ import { Products } from "../../Utils/Types/Products/Products";
 import { useGetTrendyProducts } from "../../Hooks/Products/useGetTrendyProducts";
 import ProductsShimmer from "../../Utils/Shimmer/ProductsShimmer";
 import ProductCard from "../Products/ProductCard";
+import useGetCarousel from "../../Hooks/Carousel/useGetCarousel";
 const arr: number[] = [];
 for (let i = 0; i < 8; i++) {
   arr.push(i);
 }
 const Homepage = () => {
+  const carouselData : Products[] | null = useGetCarousel();
   const trendyProducts: Products[] | null = useGetTrendyProducts();
 
   return (
-    <div className="flex-1 flex overflow-x-hidden">
-      {!trendyProducts ? (
-        <div className="flex flex-wrap p-4 w-full">
-          {arr.map((_, index) => {
-            return (
-              <div className="w-[21%] h-[48%] ml-[2.5%]" key={index}>
-                <ProductsShimmer />
-              </div>
-            );
-          })}
-        </div>
-      ) : (
-        <div className="flex flex-row flex-wrap gap-1 p-4 w-full ml-[2%] ">
-          {trendyProducts.map((product: Products, index: number) => (
-            <div className="h-[50%] w-[48%]" key={index}>
-              <ProductCard {...product} />
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+    <div className="flex-1 min-h-screen p-6 overflow-x-hidden">
+    {!trendyProducts ? (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {arr.map((_, index) => (
+          <div className="w-full aspect-[4/5]" key={index}>
+            <ProductsShimmer />
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-auto">
+        {trendyProducts.map((product: Products, index : number) => (
+          <div className="w-full" key={index}>
+            <ProductCard {...product} />
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
   );
 };
 

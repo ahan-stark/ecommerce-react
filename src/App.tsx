@@ -5,17 +5,18 @@ import store from "./Store/Store";
 import Auth from "./Components/Auth/Auth";
 import Header from "./Components/Header/Header";
 import Homepage from "./Components/Home/Homepage";
+import Category from "./Components/Category/Category";
 
 function App() {
   const Layout = () => {
     return (
       <>
         <Provider store={store}>
-          <div className="flex flex-col h-screen">
+          <div className="flex flex-col ">
             <div className="text-4xl h-[2.2em] bg-blue-500">
               <Header />
             </div>
-            <div className="flex flex-col h-[calc(100vh-4.97em)]">
+            <div className="flex flex-col">
               <Outlet />
             </div>
           </div>
@@ -36,6 +37,10 @@ function App() {
           path: "/home",
           element: <Homepage />,
         },
+        {
+          path :"/category",
+          element : <Category/>
+        }
       ],
     },
   ]);

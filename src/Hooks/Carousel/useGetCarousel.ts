@@ -1,32 +1,33 @@
 import { useEffect, useState } from "react";
 import { Products } from "../../Utils/Types/Products/Products";
 import { useSelector } from "react-redux";
-import { RootState } from "../../Store/Store";
 import { LoginState } from "../../Store/Auth/LoginSlice";
+import { RootState } from "../../Store/Store";
 import { url } from "../../Config/GlobalUrl";
 
-export const useGetTrendyProducts = (): Products[] | null => {
+const useGetCarousel = (): Products[] | null => {
   const userDetails: LoginState = useSelector(
     (store: RootState) => store.login
   );
-  const [products, setProducts] = useState<Products[] | null>(null);
-  const fetchTrendyProducts = async () => {
+  const [carouselData, setCarouselData] = useState<Products[] | null>(null);
+  const fetchCarouselData = async (): Promise<void> => {
     try {
-      const response = await fetch(url + "/trendy-products", {
+      const data = await fetch(`${url}/get-mobiles`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${userDetails.authToken!}`,
         },
       });
-      const json = await response.json();
-      setProducts(json);
+      const json = await data.json();
+      setCarouselData(json);
     } catch (err: unknown) {
-      console.error("Failed to fetch trendy products:", err);
+      console.error("Failed to fetch carousel data:", err);
     }
   };
   useEffect(() => {
-    if (userDetails.authToken) fetchTrendyProducts();
+    if (userDetails.authToken) fetchCarouselData();
   }, [userDetails.authToken]);
-  return products;
+  return carouselData;
 };
+export default useGetCarousel;

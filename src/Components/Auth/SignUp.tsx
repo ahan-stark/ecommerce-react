@@ -97,7 +97,7 @@ const SignUp: React.FC<AuthState> = ({ setState }) => {
   };
   //below css styling
   const inputCss =
-    "h-[3em] w-[23em] text-center mb-[6%] rounded-lg border border - 4 border-orange-800	";
+    "h-[3em] w-[23em] text-center mb-[6%] rounded-lg border-[1.8px] border-blue-500	";
   const toggleBtn = "text-orange-500 font-normal mt-4 cursor-pointer";
   //above css styling
   return (
@@ -110,7 +110,7 @@ const SignUp: React.FC<AuthState> = ({ setState }) => {
         <input placeholder="Phone" ref={phoneNum} className={inputCss} />
         <div className="flex flex-col items-center">
           <Button variant="contained" type="submit">
-            SignUp
+            Sign Up
           </Button>
         </div>
       </form>

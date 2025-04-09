@@ -3,22 +3,29 @@ import { Products } from "../../Utils/Types/Products/Products";
 
 const ProductCard: React.FC<Products> = ({ ...products }) => {
   return (
-    <div className="h-[100%] w-[100%] flex flex-row rounded-xl cursor-pointer ml-[3%] hover:bg-yellow-50">
-      <div className="border-4 border-yellow-200 rounded-lg mt-3 mb-3 p-[2%] h-[80%] w-[40%] flex flex-col items-center">
-        <img src={products.productImage} className="w-[80%] h-[95%] rounded-lg" />
-      </div>
-      <div className="ml-[6%] w-[100%]">
-        <div className="h-[50%] w-[80%] ">
-          <p className="text-ellipsis whitespace-nowrap overflow-hidden text-blue-700 text-center py-[15%] font-semibold text-lg">
-            {products.productName}
-          </p>
-        </div>
-        <div className="h-[30%] w-[95%] px-[35%]">
-          <p className="text-red-300 line-through">₹ {products.productPrice + 1000}</p>
-          <p className="text-green-400 font-semibold text-2xl ml-[-12%]">₹ {products.productPrice}</p>
-        </div>
-      </div>
+    <div className="h-full max-w-sm bg-yellow-50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 p-6 cursor-pointer mt-[15px] flex flex-col">
+    <div className="flex justify-center mb-4">
+        <img 
+            src={products.productImage} 
+            className="w-full max-w-[220px] h-64 object-contain rounded-md"
+            alt={products.productName}
+        />
     </div>
+    <div className="flex flex-col flex-grow">
+        <h2 className="text-xl font-semibold text-gray-800 text-center mb-3 line-clamp-2">
+            {products.productName}
+        </h2>
+        <div className="mt-auto">
+            <p className="font-bold text-center line-through text-red-500">
+                {products.productPrice + 999}
+            </p>
+            <p className="text-gray-600 font-bold text-center text-lg">
+                {products.productPrice}
+            </p>
+        </div>
+    </div>
+</div>
+
   );
 };
 
