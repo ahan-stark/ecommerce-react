@@ -12,6 +12,9 @@ const Header = () => {
   const navigate = useNavigate();
   const routeLoc = useLocation();
   const loginDetails: LoginState = useSelector((state: RootState) => state.login);
+  const navigateToHome = () =>{
+    navigate("/home");
+  }
 
   useEffect(() => {
     const localItems = localStorage.getItem("localItems");
@@ -37,7 +40,7 @@ const Header = () => {
 
   return (
     <div className="h-[2.2em] flex flex-row pl-[2%] justify-between">
-      <div>
+      <div className="cursor-pointer" onClick={navigateToHome}>
         <img className="h-[1.5em] mt-[22.2%]" src={logoImg} alt="" />
       </div>
       {loginDetails.userId && (
